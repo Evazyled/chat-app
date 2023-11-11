@@ -15,7 +15,7 @@ import { Message } from 'src/message/message.model';
   imports: [
     SequelizeModule.forFeature([Chat, User, UserChats, Message]),
     UserModule,
-    MessageModule,
+    forwardRef(() => MessageModule),
   ],
 })
 export class ChatModule {}

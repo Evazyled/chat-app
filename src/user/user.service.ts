@@ -15,7 +15,7 @@ export class UserService {
     if (candidate) {
       throw new HttpException(
         `Пользователь с именем ${dto.username} уже существует`,
-        HttpStatus.CONFLICT,
+        HttpStatus.FORBIDDEN,
       );
     }
     const user = await this.userModel.create(dto);

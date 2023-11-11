@@ -1,12 +1,11 @@
 //@ts-nocheck
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { Chat } from './chat.model';
 import { CreateChatDto } from './dto/create-chat.dto';
 import { UserService } from 'src/user/user.service';
 import { UserChats } from './user-chats.model';
 import { Message } from 'src/message/message.model';
-import { Console } from 'console';
 
 @Injectable()
 export class ChatService {
@@ -20,13 +19,18 @@ export class ChatService {
     let chats = await this.userChatModel.findAll({
       where: user,
     });
-    let name = await this.chatModel.findAll({
-      where: {},
-    });
-    return name;
+
+    return chats;
   }
 
   async createChat(dto: CreateChatDto) {
+    const alreadyExistChat = this.chatModel.findOne(dto.name);
+    if (alreadyExistChat) {
+      throw new HttpException(
+        `Чат с именем ${dto.name} уже существует`,
+        HttpStatus.FORBIDDEN,
+      );
+    }
     const chat = await this.chatModel.create({
       name: dto.name,
     });
