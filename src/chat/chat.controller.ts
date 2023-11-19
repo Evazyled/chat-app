@@ -10,7 +10,7 @@ export class ChatController {
   create(@Body() chatDto: CreateChatDto) {
     return this.chatService.createChat(chatDto);
   }
-  @Get('get')
+  @Post('get')
   find(@Body() user) {
     return this.chatService.getChatsByUserId(user);
   }

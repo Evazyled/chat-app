@@ -14,11 +14,12 @@ interface ChatCreationAttrs {
   users: [];
   chatId: number;
 }
+
 @Table({ tableName: 'chats' })
 export class Chat extends Model<Chat, ChatCreationAttrs> {
   @Column({
     type: DataTypes.INTEGER,
-    unique: true,
+    /* unique: true, */
     autoIncrement: true,
     primaryKey: true,
   })
