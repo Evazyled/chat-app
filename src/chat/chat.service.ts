@@ -61,8 +61,8 @@ export class ChatService {
       try {
         let u = await this.userModel.findByPk(user);
         checkUsers.push(u.id);
-      } catch (u) {
-        throw new HttpException(`юзера с  нет`, HttpStatus.FORBIDDEN);
+      } catch (error) {
+        throw new HttpException(`Пользователь не найден`, HttpStatus.FORBIDDEN);
       }
     }
     if (checkUsers) {

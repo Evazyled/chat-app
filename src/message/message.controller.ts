@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { MessageService } from './message.service';
 import { CreateMessagetDto } from './dto/create-message.dto';
 
@@ -9,7 +9,7 @@ export class MessageController {
   create(@Body() messageDto: CreateMessagetDto) {
     return this.messageService.createMessage(messageDto);
   }
-  @Get('get')
+  @Post('get')
   find(@Body() id) {
     return this.messageService.getMessagesById(id);
   }

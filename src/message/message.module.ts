@@ -14,7 +14,7 @@ import { ChatModule } from 'src/chat/chat.module';
   providers: [MessageService],
   controllers: [MessageController],
   imports: [
-    SequelizeModule.forFeature([Message, Chat]),
+    SequelizeModule.forFeature([Message, Chat, User]),
     forwardRef(() => ChatModule),
   ],
 })
