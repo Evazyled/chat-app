@@ -30,15 +30,6 @@ export class ChatService {
       data.push(c);
     }
     return data;
-    /* let name = await this.chatModel.findAll({
-      where: { chatId: chats.chatId },
-    });
-    return name; */
-    /* let name = chats.map(async (chat) => {
-      console.log(chat.chatId);
-      await this.chatModel.findByPk(chat.chatId);
-    });
- */
   }
 
   async createChat(dto: CreateChatDto) {
