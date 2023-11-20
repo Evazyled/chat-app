@@ -39,7 +39,7 @@ export class MessageService {
     return message;
   }
   async getMessagesById(id) {
-    const c = await this.messageModel.findByPk(id);
+    const c = await this.messageModel.findOne({ where: id });
     if (!c) {
       throw new HttpException(
         `Чат с id ${id} не существует`,

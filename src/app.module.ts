@@ -14,7 +14,7 @@ import { Message } from './message/message.model';
   imports: [
     SequelizeModule.forRoot({
       dialect: 'postgres',
-      host: 'localhost', //postgres для докера , локально localhost
+      host: 'postgres', //postgres для докера , локально localhost
       port: 5432,
       username: 'postgres',
       password: 'admin',
