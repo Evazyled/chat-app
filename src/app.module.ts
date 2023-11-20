@@ -23,9 +23,6 @@ import { Message } from './message/message.model';
       models: [User, Chat, UserChats, Message],
       autoLoadModels: true,
       define: {
-        /*  defaultScope: {
-          attributes: { exclude: ['updatedAt'] },
-        }, */
         timestamps: true,
         updatedAt: false,
         createdAt: 'created_at',

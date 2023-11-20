@@ -10,6 +10,9 @@ export class UserService {
     private userModel: typeof User,
   ) {}
   async createUser(dto: CreateUserDto) {
+    if (!dto.username) {
+      throw new HttpException(`Введите имя пользователя`, HttpStatus.FORBIDDEN);
+    }
     const candidate = await this.getOneUser(dto.username);
 
     if (candidate) {

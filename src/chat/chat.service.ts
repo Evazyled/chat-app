@@ -49,12 +49,12 @@ export class ChatService {
     });
     console.log(dto.name);
 
-    /* if (alreadyExistChat) {
+    if (alreadyExistChat) {
       throw new HttpException(
         `Чат с именем ${dto.name} уже существует`,
         HttpStatus.FORBIDDEN,
       );
-    } */
+    }
 
     let checkUsers = [];
     for (let user of dto.users) {
